@@ -17,6 +17,12 @@ class ChoicesController extends Controller
         return Choices::find($id);
     }
 
+//get the choices for a particular question
+    public function choice($id)
+    {
+        return Choices::where('questions_id',$id)->get();
+    }
+
     public function store(Request $request)
     {
         $choices = Choices::create($request->all());

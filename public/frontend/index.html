@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Questions App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+  </head>
+  <body>
+    <div class="container" id="app">
+      <h3 class="text-center">Questions</h3> 
+      <div v-for="(quiz, index) in questions" v-show="index === questionIndex" :key="index">
+        <p>{{ quiz.question }} </p>
+        <li v-for="choice in choices" :key="choice.id" ><label class="radio">
+          <input type="radio" name="answer" v-model="answers[index]" :value="choice.id" @change="compare(answers[index], quiz.answer_id)">
+          <i></i>{{ choice.choice }}</label></li>
+          <button class="button" @click="next">next</button>
+          <button class="button" v-if="questionIndex > 0 " @click="prev">prev</button>
+          <p>{{ status }}</p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
