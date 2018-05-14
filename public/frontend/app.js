@@ -34,6 +34,7 @@ const vm = new Vue({
         prev: function () {
             this.status = ''
             this.questionIndex--;
+            this.getChoices()
         },
         compare: function (choice, answer) {
             if ( choice == answer) {
